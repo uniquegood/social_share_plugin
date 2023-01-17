@@ -134,26 +134,7 @@ public class SwiftSocialSharePlugin: NSObject, FlutterPlugin, SharingDelegate {
                let quote = myArgs["quote"] as? String,
                let url = myArgs["url"] as? String
             {
-                let fbURL = URL(string: "fbapi://")
-                if let fbURL = fbURL {
-                    if UIApplication.shared.canOpenURL(fbURL) {
-                        facebookShareLink(quote, url: url)
-//                        result(nil)
-                    } else {
-                        let fbLink = "itms-apps://itunes.apple.com/us/app/apple-store/id284882215"
-                        if #available(iOS 10.0, *) {
-                            if let url = URL(string: fbLink) {
-                                UIApplication.shared.open(url, options: [:]) { _ in
-                                }
-                            }
-                        } else {
-                            if let url = URL(string: fbLink) {
-                                UIApplication.shared.openURL(url)
-                            }
-                        }
-                        result(false)
-                    }
-                }
+                facebookShareLink(quote, url: url)
             } else {
                 result(false)
             }
